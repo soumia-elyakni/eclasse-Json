@@ -47,19 +47,6 @@ file_put_contents("students.json",$data);
 /***********Form************/
 
 
-// $name = $_POST ['Name'];
-// $mail = $_POST ['mail'];
-// $phone = $_POST ['Phone'];
-// $ernbr = $_POST ['ErN'];
-// $addate = $_POST ['Addate'];
-
-
-
-// echo "name : " .$name. "<br>";
-// echo "mail : " .$mail. "<br>";
-// echo "Phone :" .$phone. "<br>";
-// echo "Eroll Number : " .$ernbr. "<br>";
-// echo "Date :" .$addate. "<br>";
 
 
 
