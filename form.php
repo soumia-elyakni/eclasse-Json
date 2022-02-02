@@ -53,18 +53,17 @@
     if(isset($_POST['save'])){
         //open the json file
         $data = file_get_contents('students.json');
-        $data = json_decode($data);
+        $data = json_decode($data, true);
  
         //data in out POST
         $input = array(
-            
-            'name' => $_POST['Name'],
+            'name' => $_POST['name'],
             'mail' => $_POST['mail'],
             'phone' => $_POST['phone'],
             'Enrlnbr' => $_POST['Enrlnbr'],
             'Addate' => $_POST['Addate']
         );
- 
+          
         //append the input to our array
         $data[] = $input;
         //encode back to json

@@ -39,8 +39,8 @@
  ];
 
 
- $data= json_encode($students);
-file_put_contents("students.json",$data);
+//  $data= json_encode($students);
+// file_put_contents("students.json",$data);
 
 
 

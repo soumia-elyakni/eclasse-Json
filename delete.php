@@ -1,11 +1,14 @@
 <?php
-    //get the index
-    $index = $_GET['index'];
- 
+
     //fetch data from json
     $data = file_get_contents('students.json');
-    $data = json_decode($data);
- 
+    $data = json_decode($data,true);
+
+     //get the index
+     $email = $_GET['index'];
+     $index = getIndexByEmail($email, $data);
+
+
     //delete the row with the index
     unset($data[$index]);
  
@@ -14,4 +17,13 @@
     file_put_contents('students.json', $data);
  
     header('location: stud.php');
+
+    function getIndexByEmail($mail, $data){
+        $id = null;
+        foreach($data as $index=>$user){
+            if($user['mail'] === $mail)
+                $id = $index;
+        }
+        return $id;
+    }
 ?>

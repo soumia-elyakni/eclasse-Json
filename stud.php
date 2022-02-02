@@ -67,14 +67,13 @@
               <td class='pt-3'>$row->phone</td>
               <td class='pt-3'>$row->Enrlnbr</td>
               <td class='pt-3'>$row->Addate</td> 
-              <td class='pt-3'><a href='edit.php?index=".$index."'><button style='background-color: transparent; border:transparent'><i class='fas fa-pen' style='color: turquoise;'></i></td></button></a>
-              <td class='pt-3'><a href='delete.php?index=".$index."'><button style='background-color: transparent; border:transparent'><i class='fas fa-trash' style='color: turquoise;'></i></td></button></a>
+              <td class='pt-3'><a href='edit.php?index=".$row->mail."'><button style='background-color: transparent; border:transparent'><i class='fas fa-pen' style='color: turquoise;'></i></td></button></a>
+              <td class='pt-3'><a href='delete.php?index=".$row->mail."'><button style='background-color: transparent; border:transparent'><i class='fas fa-trash' style='color: turquoise;'></i></td></button></a>
             </tr>";
 
             $index++; 
           }
-          ?>
-          
+        ?>
          </tbody>
         </table> 
     </main>
