@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Students</title>
+    <title>ADD STUDENT</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -66,6 +66,7 @@
           
         //append the input to our array
         $data[] = $input;
+        
         //encode back to json
         $data = json_encode($data, JSON_PRETTY_PRINT);
         file_put_contents('students.json', $data);
