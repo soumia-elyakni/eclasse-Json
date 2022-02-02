@@ -6,21 +6,28 @@
                 $id = $index;
         }
         return $id;
+        
+        }
 
-      
-    //get the index from URL
-    $email = $_GET['index'];
-    $index = getIndexByEmail($email, $data);
- 
+
     //get json data
     $data = file_get_contents('students.json');
     $data = json_decode($data, true);
+
+    //get the index from URL
+    $email = $_GET['index'];
+
+    $index = getIndexByEmail($email, $data);
+ 
+
  
     //assign the data to selected index
     $row = $data [$index];
- 
-    }
+    
 ?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,27 +44,27 @@
             <label for="name">
               <span>Name :</span>
             </label>
-            <input type="text" name="name" class="w-100 p-1 mt-2" value="<?php echo "$row->name"; ?>">
+            <input type="text" name="name" class="w-100 p-1 mt-2" value="<?php echo $row["name"]; ?>">
           
             <label for="mail">
               <span>Email :</span>
             </label>
-            <input type="text"  name="mail" class="w-100 p-1 mt-2" value="<?php echo "$row->mail"; ?>">
+            <input type="text"  name="mail" class="w-100 p-1 mt-2" value="<?php echo $row["mail"]; ?>">
     
             <label for="phone">
                 <span>Phone :</span>
             </label>
-            <input type="tel"  name="phone" class="w-100 p-1 mt-2" value="<?php echo "$row->phone"; ?>">
+            <input type="tel"  name="phone" class="w-100 p-1 mt-2" value="<?php echo $row["phone"]; ?>">
 
             <label for="Enrlnbr">
                 <span>Eroll Number :</span>
             </label>
-            <input type="tel"  name="Enrlnbr" class="w-100 p-1 mt-2" value="<?php echo "$row->Enrlnbr"; ?>">
+            <input type="tel"  name="Enrlnbr" class="w-100 p-1 mt-2" value="<?php echo $row["Enrlnbr"]; ?>">
 
             <label for="Addate">
                 <span>Date of admission :</span>
             </label>
-            <input type="date"  name="Addate" class="w-100 p-1 mt-2" value="<?php echo "$row->Addate"; ?>" >
+            <input type="date"  name="Addate" class="w-100 p-1 mt-2" value="<?php echo $row["Addate"]; ?>" >
 
             <input type="submit" value="save" name="save" class="btn btn-info w-100 mt-4"><a href="" class="text-white text-decoration-none"></a>
 
@@ -89,6 +96,8 @@
         header('location: stud.php');
     }
 ?>
+
+
 </body>
 </html>
     
