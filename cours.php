@@ -21,13 +21,13 @@
                 <!--avanttable-->
 
       <section class="nav_bar d-flex align-items-center px-3 bg-light">
-            <h2 class="tabtitle col-9 align-self-center mt-1">Students list</h2> 
+            <h2 class="tabtitle col-9 align-self-center mt-1">Courses liste</h2> 
             <div class="col-3 align-self-center d-flex">
               <button style="border: transparent; background: transparent; align-self: center;"> 
                  <img src="images/svg/buttonpay.svg">
               </button>
-              <a href="form.php"><button class="addns text-white" style="border : none; background: #00C1FE; border-radius: 4px;">
-             ADD NEW STUDENT
+              <a href="formCrs.php"><button class="addns text-white" style="border : none; background: #00C1FE; border-radius: 4px;">
+             ADD NEW COURS
              </button></a>
              </div>
       </section>
@@ -35,16 +35,14 @@
                    <!--table-->
           
       <div class="m-3 mt-5">
-        <table class="table table-responsive>
-          <thead class="text-muted" style="background: transparent;">
+        <table class="table table-responsive">
+          <thead class="text-muted" style="background: transparent">
             <tr>
-              <td class="d-none"></td>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Enroll Number</th>
-              <th scope="col" colspan="2">Date of admission</th>
+              <th scope="col">id</th>
+              <th scope="col">Title</th>
+              <th scope="col">Chapitres</th>
+              <th scope="col">Prix en $</th>
+
               <td></td>
             </tr>
           </thead>
@@ -52,32 +50,35 @@
           
           <?php
 
-           $connect = new mysqli("localhost", "root", "", "e_classe_db");
+           $connect = mysqli_connect("localhost", "root", "", "e_classe_db");
            if($connect -> connect_error) {
              die("connection failed :".$connect -> connect_error);
            }
-            $sql= "SELECT name, email, phone, enroll_number, date_of_admission from students ";
+            $sql= "SELECT * from courses ";
             $read =$connect -> query($sql);
               if($read -> num_rows > 0){
                 while($row= $read -> fetch_assoc()){
-              
-           echo "
+            ?> 
+  
               <tr>
-              <td class='pt-3'><img src='images/img_table.png' class='rounded-circle' alt='img'></td>
               
-              <td class='pt-3'>".$row['name']."</td>
-              <td class='pt-3'>".$row['email']."</td>
-              <td class='pt-3'>".$row['phone']."</td>
-              <td class='pt-3'>".$row['enroll_number']."</td>
-              <td class='pt-3'>".$row['date_of_admission']."</td> 
-              <td class='pt-3'><a href='update.php?index=".$row['email']."'><button style='background-color: transparent; border:transparent'><i class='fas fa-pen' style='color: turquoise;'></i></td></button></a>
-              <td class='pt-3'><a href='delete.php?index=".$row['email']."'><button style='background-color: transparent; border:transparent'><i class='fas fa-trash' style='color: turquoise;'></i></td></button></a>
-            </tr>";
+              <td class='pt-3'><?="$row[id]"?></td>
+              <td class='pt-3'><?="$row[title]"?></td>
+              <td class='pt-3'><?="$row[chapitre]"?></td>
+              <td class='pt-3'><?="$row[prix]"?></td>
+ 
+              <td class='pt-3'>
+                <a href="updateCrs.php?index=<?="$row[id]"?>"> <button style="background-color: transparent; border:transparent"><i class="fas fa-pen" style="color: turquoise;"></i></button></a>
+                <a href="deleteCrs.php?index=<?="$row[id]"?>"><button style="background-color: transparent; border:transparent"><i class="fas fa-trash" style="color: turquoise;"></i></button></a>
+              </td>
+            </tr>
+            
+            <?php
               }
 
               }
               else {
-                echo "0 result";
+                echo "le tableau est vide";
              }
 
              $connect -> close();

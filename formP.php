@@ -15,34 +15,38 @@
 
 <body>
 
-<h1 class="text-center text-secondary mt-3">Students informations :</h1>
-<h2 class="text-center text-primary">Saisissez les informations de l'apprenant</h2>
-<form class="mt-5 w-75 m-auto" action="add.php" method="POST" >
+<h1 class="text-center text-secondary mt-3">A New Payement :</h1>
+<h2 class="text-center text-primary">Remplissez les champs du payement</h2>
+<form class="mt-5 w-75 m-auto" action="addP.php" method="POST" >
             
             <label for="name">
               <span>Name :</span>
             </label>
             <input type="text" name="name" class="w-100 p-1 mt-2">
           
-            <label for="mail">
-              <span>Email :</span>
+            <label for="payement_schedule">
+              <span>Payment Schedule :</span>
             </label>
-            <input type="text"  name="email" class="w-100 p-1 mt-2">
+            <input type="text"  name="payement_schedule" class="w-100 p-1 mt-2">
     
-            <label for="phone">
-                <span>Phone :</span>
+            <label for="bill_number">
+                <span>Bill Number :</span>
             </label>
-            <input type="tel"  name="phone" class="w-100 p-1 mt-2">
+            <input type="text"  name="bill_number" class="w-100 p-1 mt-2">
 
-            <label for="enroll_number">
-                <span>Eroll Number :</span>
+            <label for="amount_paid">
+                <span>Amount Paid :</span>
             </label>
-            <input type="tel"  name="enroll_number" class="w-100 p-1 mt-2">
+            <input type="text"  name="amount_paid" class="w-100 p-1 mt-2">
 
-            <label for="date_of_admission">
-                <span>Date of admission :</span>
+            <label for="balance_amount">
+                <span>Balance amount :</span>
             </label>
-            <input type="date"  name="date_of_admission" class="w-100 p-1 mt-2">
+            <input type="text"  name="balance_amount" class="w-100 p-1 mt-2">
+
+
+
+            
 
             <input type="submit" value="save" name="save" class="btn btn-info w-100 mt-4"><a href="" class="text-white text-decoration-none"></a>
 

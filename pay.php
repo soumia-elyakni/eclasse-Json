@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,23 +16,28 @@
     <?php 
     require 'dash.php'
     ?>
-
+    <?php 
+    $conn = new mysqli('localhost', 'root', '', 'e_classe_db');     
+   ?>
     <main>
+
           <!--avanttable-->
 
-      <section class="nav_bar d-flex align-items-center px-3">
-
-        <h2 class="tabtitle col-11 align-self-center mt-1">Payment Details</h2> 
-        <div class="col-1 flex-end ">
-            <button style="border: transparent; background: transparent; align-self: center;">
-              <img src="images/svg/buttonpay.svg">
-            </button>
-        </div>
-      </section>
+      <section class="nav_bar d-flex align-items-center px-3 bg-light">
+            <h2 class="tabtitle col-9 align-self-center mt-1">Payements Détails</h2> 
+            <div class="col-3 align-self-center d-flex">
+              <button style="border: transparent; background: transparent; align-self: center;"> 
+                 <img src="images/svg/buttonpay.svg">
+              </button>
+              <a href="formP.php"><button class="addns text-white" style="border : none; background: #00C1FE; border-radius: 4px;">
+             ADD A NEW PAYEMET
+             </button></a>
+             </div>
+      </section> 
 
           <!--table-->
           
-      <section class="mt-5 mx-2">
+      <section class="mt-5 pt-3 mx-2">
         <table class="table table-responsive table-striped table-sm">
           <thead class="text-muted" style="background: transparent;">
             <tr>
@@ -52,23 +55,36 @@
 
           <?php
 
-          $tableJson= file_get_contents("payments.json",);
-          $payment= json_decode("$tableJson");
+            if($conn -> connect_error) {
+            die("connection failed :".$conn -> connect_error);
+            }
+            $sql= "SELECT * from payements ";
+            $read =$conn -> query($sql);
+              if($read -> num_rows > 0){
+                while($payment= $read -> fetch_assoc()){
 
-          $index = 0;
-          foreach($payment as $row) 
-           echo "<tr>
-              <td class='pt-3'>$row->name</td>
-              <td class='pt-3'>$row->payement</td>
-              <td class='pt-3'>$row->Billnbr</td>
-              <td class='pt-3'>$row->amountp</td>
-              <td class='pt-3'>$row->balan</td>
-              <td class='pt-3'>$row->Date</td>
-              <td class='pt-3'><i class='fas fa-eye' style='color: turquoise;'></i></td>
-            </tr>";
+           ?>
 
-          $index++;
-          ?>
+           <tr>
+              <td class="pt-3"><?= $payment['name']?></td>
+              <td class="pt-3"><?= $payment['payement_schedule']?></td>
+              <td class="pt-3"><?= $payment['bill_number']?></td>
+              <td class="pt-3"><?= $payment['amount_paid']?></td>
+              <td class="pt-3"><?= $payment['balance_amount']?></td>
+              <td class="pt-3"><?= $payment['date'] ?></td>
+              <td class="pt-3"><i class="fas fa-eye" style="color: turquoise;"></i></td>
+            </tr>
+
+          <?php
+          } 
+          }
+
+          else {
+            echo "le tableau est vide";
+         }
+
+         $conn -> close();
+           ?>
 
           </tbody>
         </table>

@@ -1,3 +1,9 @@
+<?php
+    $connect = new mysqli("localhost", "root", "", "e_classe_db");
+    session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +31,7 @@
             </li>
             <li class="text-center">
                 <img class="rounded-circle w-50 " src="images/youcode.png">
-                <h3 class="text-dark ">Admin name</h3>
+                <h3 class="text-dark "><?php echo $_SESSION['name']?></h3>
                 <p class="text-info ">Admin</p>
             </li>
         </ul>
@@ -37,7 +43,7 @@
                 </a>
             </li>
             <li class="link mt-3 ps-3 rounded-3 ">
-                <a href="#">
+                <a href="cours.php">
                     <img class="mx-auto" src="images/svg/cours.svg" alt="">
                     <small>Cours</small>
                 </a>
